@@ -507,6 +507,12 @@ public class RNPushNotificationHelper {
 
         userInfo.putString("something", "is in here");
 
+        for (String key: extras.keySet())
+        {
+            Log.i(LOG_TAG, key + " is a key in the bundle");
+            Log.i(LOG_TAG, key + ": " + extras.get(key));
+        }
+
         //Log.i(LOG_TAG, extras);
 
         notif.putString("identifier", "" + notification.getId());
