@@ -505,6 +505,8 @@ public class RNPushNotificationHelper {
             userInfo.putString("id", extras.getString("id"));
         }
 
+        userInfo.putString("something", "is in here");
+
         Log.i(LOG_TAG, extras);
 
         notif.putString("identifier", "" + notification.getId());
