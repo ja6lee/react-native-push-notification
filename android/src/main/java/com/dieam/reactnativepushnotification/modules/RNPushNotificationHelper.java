@@ -496,11 +496,23 @@ public class RNPushNotificationHelper {
         Notification original = notification.getNotification();
         Bundle extras = original.extras;
         WritableMap notif = Arguments.createMap();
+
+        WritableMap userInfo = Arguments.createMap();
+        if (extras.getString("type") != null) {
+            userInfo.putString("type", extras.getString("type"));
+        }
+        if (extras.getString("id") != null) {
+            userInfo.putString("id", extras.getString("id"));
+        }
+
+        Log.i(LOG_TAG, extras);
+
         notif.putString("identifier", "" + notification.getId());
         notif.putString("title", extras.getString(Notification.EXTRA_TITLE));
         notif.putString("body", extras.getString(Notification.EXTRA_TEXT));
         notif.putString("tag", notification.getTag());
         notif.putString("group", original.getGroup());
+        notif.putMap("userInfo", userInfo);
         result.pushMap(notif);
       }
 
